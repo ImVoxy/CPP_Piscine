@@ -6,7 +6,7 @@
 #    By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/29 16:34:58 by alpascal          #+#    #+#              #
-#    Updated: 2021/12/26 17:38:38 by alpascal         ###   ########.fr        #
+#    Updated: 2021/12/29 18:49:48 by alpascal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,24 +15,27 @@ GREEN = `tput setaf 2`
 RED = `tput setaf 1`
 END = `tput sgr0`
 
-NAME	= megaphone
+NAME		= phonebook
 
-SRCS	= megaphone.cpp
+SRCS		= srcs/phonebook.cpp \
+				srcs/main.cpp \
 
-OBJ		= $(SRCS:.cpp=.o)
+INCLUDES	= -Iincludes
 
-RM 		= rm -rf
-CC 		= clang++
+OBJ			= $(SRCS:.cpp=.o)
+
+RM 			= rm -rf
+CC 			= clang++
 
 all:	$(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -Wall -Wextra -Werror $(OBJ) -o $(NAME)
+	$(CC) -Wall -Wextra -Werror $(OBJ) $(INCLUDES) -o $(NAME)
 	@echo "$(GREEN)$(NAME) binary is ready !$(END)"
 
-%.o: %.c
+%.o: %.c $(INCLUDES)
 	@echo "$(GREEN)Compiling source files to objects $<$ ...$(END)"
-	$(CC) -Wall -Wextra -Werror -c $< -o $@
+	$(CC) -Wall -Wextra -Werror $(INCLUDES) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
