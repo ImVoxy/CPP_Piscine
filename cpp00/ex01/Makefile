@@ -1,47 +1,33 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/29 16:34:58 by alpascal          #+#    #+#              #
-#    Updated: 2021/12/29 18:49:48 by alpascal         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = phonebook
 
-# Colors
-GREEN = `tput setaf 2`
-RED = `tput setaf 1`
-END = `tput sgr0`
+CXX = clang++
+CXXFLAGS = -Wall -Wextra -Werror
+INC = -Iincludes
 
-NAME		= phonebook
+SRCDIR = srcs/
 
-SRCS		= srcs/phonebook.cpp \
-				srcs/main.cpp \
+SRCS = main.cpp \
+		phonebook.cpp\
 
-INCLUDES	= -Iincludes
+OBJDIR = obj/
 
-OBJ			= $(SRCS:.cpp=.o)
+OBJ = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-RM 			= rm -rf
-CC 			= clang++
+all: $(NAME)
 
-all:	$(NAME)
+$(NAME): $(OBJDIR) $(OBJ)
+	$(CXX) $(CXXFLAGS) $(INC) $(OBJ) -o $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) -Wall -Wextra -Werror $(OBJ) $(INCLUDES) -o $(NAME)
-	@echo "$(GREEN)$(NAME) binary is ready !$(END)"
+$(OBJDIR):
+	mkdir -p $@
 
-%.o: %.c $(INCLUDES)
-	@echo "$(GREEN)Compiling source files to objects $<$ ...$(END)"
-	$(CC) -Wall -Wextra -Werror $(INCLUDES) -c $< -o $@
+$(OBJDIR)%.o: $(SRCDIR)%.cpp
+	$(CXX) $(CXXFLAGS) $(INC) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	rm -rf $(OBJDIR)
 
-fclean:		clean
-	$(RM) $(NAME)
-	@echo "$(RED)$(NAME) removed$(END)"
+fclean: clean
+	rm -rf $(NAME) a.out
 
 re: clean fclean all

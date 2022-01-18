@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/29 18:02:04 by alpascal          #+#    #+#             */
-/*   Updated: 2021/12/31 11:59:25 by alpascal         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/phonebook.hpp"
 
 int	main(void)
@@ -21,7 +9,8 @@ int	main(void)
 	{
 		std::cout << "Type your command :" << std::endl;
 		std::cout << "-> ";
-		std::getline(std::cin, command);
+		// std::getline(std::cin, command);
+		std::cin >> command;
 		if (command == "ADD")
 			phonebook.Add();
 		else if (command == "SEARCH")
@@ -29,9 +18,11 @@ int	main(void)
 			if (phonebook.index != 0)
 				phonebook.Search();
 			else
+			{
 				std::cout << 
 				"Your contact list is currently empty, consider using ADD to add a new contact"
 				 << std::endl;
+			}
 		}
 		else if (command == "EXIT")
 			break;

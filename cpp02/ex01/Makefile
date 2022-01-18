@@ -1,12 +1,13 @@
-NAME = megaphone
+NAME = canon2
 
 CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 INC = -Iincludes
 
-SRCDIR = ./
+SRCDIR = srcs/
 
-SRCS = megaphone.cpp \
+SRCS = main.cpp \
+		Fixed.cpp\
 
 OBJDIR = obj/
 
@@ -30,4 +31,3 @@ fclean: clean
 	rm -rf $(NAME) a.out
 
 re: clean fclean all
-

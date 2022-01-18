@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 14:11:27 by alpascal          #+#    #+#             */
-/*   Updated: 2021/12/31 11:27:56 by alpascal         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/phonebook.hpp"	
 
 Phonebook::Phonebook(void)
@@ -68,23 +56,31 @@ void	Phonebook::Search(void)
 		else
 			std::cout << "|" << this->contact[i].nickname.substr(0, 9) << "." << std::endl;
 	}
-		std::cout << "__________";
-		std::cout << "|__________";
-		std::cout << "|__________";
-		std::cout << "|__________" << std::endl;	
-		std::cout << "Type index of the contact of your choice :" << std::endl;
-		std::cout << "-> ";
-		std::cin >> command;
-		if (!(command > 0 && command <= this->index))
-			std::cout << "The index you chosed is invalid.." << std::endl;
-		else
-		{
-			std::cout << this->contact[command - 1].first_name << std::endl;
-			std::cout << this->contact[command - 1].last_name << std::endl;
-			std::cout << this->contact[command - 1].nickname << std::endl;
-			std::cout << this->contact[command - 1].phone_number << std::endl;
-			std::cout << this->contact[command - 1].darkest_secret << std::endl;
-		}
+	std::cout << "__________";
+	std::cout << "|__________";
+	std::cout << "|__________";
+	std::cout << "|__________" << std::endl;	
+	std::cout << "Type index of the contact of your choice :" << std::endl;
+	std::cout << "-> ";
+	std::cin >> command;
+	std::cin.ignore();
+	if (std::cin.fail())
+	{
+		std::cout << "The index you chosed is invalid.." << std::endl;
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		return;
+	}
+	if (!(command > 0 && command <= this->index))
+	{
+		std::cout << "The index you chosed is invalid.." << std::endl;
+		return;
+	}
+	std::cout << this->contact[command - 1].first_name << std::endl;
+	std::cout << this->contact[command - 1].last_name << std::endl;
+	std::cout << this->contact[command - 1].nickname << std::endl;
+	std::cout << this->contact[command - 1].phone_number << std::endl;
+	std::cout << this->contact[command - 1].darkest_secret << std::endl;
 	return;
 }
 

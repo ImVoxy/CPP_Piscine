@@ -1,12 +1,15 @@
-NAME = megaphone
+NAME = UnnecessaryViolence
 
 CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror
 INC = -Iincludes
 
-SRCDIR = ./
+SRCDIR = srcs/
 
-SRCS = megaphone.cpp \
+SRCS = main.cpp \
+		HumanA.cpp\
+		HumanB.cpp \
+		Weapon.cpp \
 
 OBJDIR = obj/
 
@@ -30,4 +33,3 @@ fclean: clean
 	rm -rf $(NAME) a.out
 
 re: clean fclean all
-

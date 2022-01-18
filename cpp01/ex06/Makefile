@@ -1,12 +1,14 @@
-NAME = megaphone
+# Colors
+NAME = Karen-filter
 
 CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror
 INC = -Iincludes
 
-SRCDIR = ./
+SRCDIR = srcs/
 
-SRCS = megaphone.cpp \
+SRCS = main.cpp \
+		Karen.cpp\
 
 OBJDIR = obj/
 
@@ -30,4 +32,3 @@ fclean: clean
 	rm -rf $(NAME) a.out
 
 re: clean fclean all
-

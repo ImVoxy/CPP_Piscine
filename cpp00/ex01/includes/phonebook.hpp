@@ -1,21 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/29 14:46:14 by alpascal          #+#    #+#             */
-/*   Updated: 2021/12/31 11:59:19 by alpascal         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 # ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
 # include <iostream>
 # include <iomanip>
 # include <string>
+# include <limits>
 
 class Phonebook
 {

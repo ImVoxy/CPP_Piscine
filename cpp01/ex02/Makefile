@@ -1,12 +1,12 @@
-NAME = megaphone
+NAME = HiThisIsBrain
 
 CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror
 INC = -Iincludes
 
-SRCDIR = ./
+SRCDIR = srcs/
 
-SRCS = megaphone.cpp \
+SRCS = main.cpp \
 
 OBJDIR = obj/
 
@@ -30,4 +30,3 @@ fclean: clean
 	rm -rf $(NAME) a.out
 
 re: clean fclean all
-

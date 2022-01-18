@@ -1,12 +1,12 @@
-NAME = megaphone
+NAME = replace
 
 CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror
 INC = -Iincludes
 
-SRCDIR = ./
+SRCDIR = srcs/
 
-SRCS = megaphone.cpp \
+SRCS = main.cpp \
 
 OBJDIR = obj/
 
@@ -27,7 +27,6 @@ clean:
 	rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -rf $(NAME) a.out
+	rm -rf $(NAME) a.out tests/*.replace
 
 re: clean fclean all
-
