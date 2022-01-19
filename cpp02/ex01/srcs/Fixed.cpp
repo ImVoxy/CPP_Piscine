@@ -6,6 +6,14 @@ Fixed::Fixed(void)
 	this->_val = 0;
 }
 
+Fixed::Fixed(const Fixed &src)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = src;
+}
+
+// Int and Float Constructors
+
 Fixed::Fixed(int val)
 {
 	std::cout << "Int constuctor called" << std::endl;
@@ -18,17 +26,9 @@ Fixed::Fixed(float val)
 	this->_val = (int)roundf(val * (1 << this->_fractionalBitsNb));
 }
 
-Fixed::Fixed(const Fixed &src)
-{
-	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
-}
+//
 
-std::ostream &operator<<(std::ostream &output, const Fixed &val)
-{
-	output << val.toFloat();
-	return (output);
-}
+//	Convertions
 
 int Fixed::toInt(void) const
 {
@@ -43,6 +43,8 @@ float Fixed::toFloat(void) const
 	return (ret);
 }
 
+//
+
 int Fixed::getRawBits(void) const
 {
 	return (this->_val);
@@ -52,6 +54,16 @@ void Fixed::setRawBits(int rawval)
 {
 	this->_val = rawval;
 }
+
+// Operator overload
+
+std::ostream &operator<<(std::ostream &output, const Fixed &val)
+{
+	output << val.toFloat();
+	return (output);
+}
+
+//
 
 Fixed::~Fixed(void)
 {

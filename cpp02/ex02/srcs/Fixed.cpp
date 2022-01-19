@@ -1,35 +1,13 @@
 #include "../includes/Fixed.hpp"
 
-const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
-{
-	if ((Fixed)a < (Fixed)b)
-		return (a);
-	return (b);
-}
-
-const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
-{
-	if ((Fixed)a > (Fixed)b)
-		return (a);
-	return (b);
-}
-
-Fixed &Fixed::min(Fixed &a, Fixed &b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-Fixed &Fixed::max(Fixed &a, Fixed &b)
-{
-	if (a > b)
-		return (a);
-	return (b);
-}
-
 Fixed::Fixed(void)
 {
 	this->_val = 0;
+}
+
+Fixed::Fixed(const Fixed &src)
+{
+	*this = src;
 }
 
 Fixed::Fixed(int _val)
@@ -42,9 +20,14 @@ Fixed::Fixed(float _val)
 	this->_val = (int)roundf(_val * (1 << this->_fractionalBitsNb));
 }
 
-Fixed::Fixed(const Fixed &src)
+int Fixed::toInt(void) const
 {
-	*this = src;
+	return (this->_val >> this->_fractionalBitsNb);
+}
+
+float Fixed::toFloat(void) const
+{
+	return ((float)this->_val / (1 << this->_fractionalBitsNb));
 }
 
 Fixed &Fixed::operator=(const Fixed &src)
@@ -52,6 +35,8 @@ Fixed &Fixed::operator=(const Fixed &src)
 	this->_val = src._val;
 	return (*this);
 }
+
+// Comparison overload
 
 bool Fixed::operator<(const Fixed &rhs)
 {
@@ -84,6 +69,10 @@ bool Fixed::operator!=(const Fixed &rhs)
 	return (ret);
 }
 
+//
+
+// Arithmetic
+
 Fixed Fixed::operator+(const Fixed &b)
 {
 	Fixed res;
@@ -113,6 +102,10 @@ Fixed Fixed::operator/(const Fixed &b)
 	return (res);
 }
 
+//
+
+// Pre/post incrementation/decrementation
+
 Fixed &Fixed::operator++(void)
 {
 	this->_val += 1;
@@ -139,21 +132,40 @@ Fixed Fixed::operator--(int)
 	return (temp);
 }
 
-std::ostream &operator<<(std::ostream &output, const Fixed &val)
+//
+
+// MIN AND MAX
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
 {
-	output << val.toFloat();
-	return (output);
+	if ((Fixed)a < (Fixed)b)
+		return (a);
+	return (b);
 }
 
-int Fixed::toInt(void) const
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
 {
-	return (this->_val >> this->_fractionalBitsNb);
+	if ((Fixed)a > (Fixed)b)
+		return (a);
+	return (b);
 }
 
-float Fixed::toFloat(void) const
+Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
-	return ((float)this->_val / (1 << this->_fractionalBitsNb));
+	if (a < b)
+		return (a);
+	return (b);
 }
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+//
+
+
 
 int Fixed::getRawBits(void) const
 {
@@ -163,6 +175,12 @@ int Fixed::getRawBits(void) const
 void Fixed::setRawBits(int raw)
 {
 	this->_val = raw;
+}
+
+std::ostream &operator<<(std::ostream &output, const Fixed &val)
+{
+	output << val.toFloat();
+	return (output);
 }
 
 Fixed::~Fixed(void)

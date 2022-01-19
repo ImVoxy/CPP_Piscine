@@ -18,19 +18,16 @@ public:
 	Fixed(const Fixed &src);
 
 	Fixed &operator=(const Fixed &src);
-
 	bool operator<(const Fixed &rhs);
 	bool operator>(const Fixed &rhs);
 	bool operator<=(const Fixed &rhs);
 	bool operator>=(const Fixed &rhs);
 	bool operator==(const Fixed &ths);
 	bool operator!=(const Fixed &ths);
-
 	Fixed operator+(const Fixed &rhs);
 	Fixed operator-(const Fixed &rhs);
 	Fixed operator*(const Fixed &rhs);
 	Fixed operator/(const Fixed &rhs);
-
 	Fixed &operator++(void);
 	Fixed &operator--(void);
 	Fixed operator++(int);
@@ -45,8 +42,8 @@ public:
 	~Fixed();
 
 	static const Fixed &min(const Fixed &a, const Fixed &b);
-	static Fixed &min(Fixed &a, Fixed &b);
 	static const Fixed &max(const Fixed &a, const Fixed &b);
+	static Fixed &min(Fixed &a, Fixed &b);
 	static Fixed &max(Fixed &a, Fixed &b);
 };
 

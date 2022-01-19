@@ -1,5 +1,4 @@
-NAME = canon
-
+NAME = Fixed
 CXX = clang++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 INC = -Iincludes

@@ -1,4 +1,4 @@
-NAME = canon2
+NAME = Fixed
 
 CXX = clang++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
