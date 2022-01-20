@@ -1,0 +1,42 @@
+#include "Animal.hpp"
+
+Animal::Animal()
+{
+	this->type = "Random Animal";
+	std::cout << this->type << " was created" << std::endl;
+}
+
+Animal::Animal(std::string type)
+{
+	this->type = type;
+	std::cout << this->type << " was created" << std::endl;
+}
+
+Animal::Animal(Animal const &src)
+{
+	*this = src;
+	std::cout << src.type << " was copied" << std::endl;
+	return;
+}
+
+Animal &Animal::operator=(Animal const &src)
+{
+	this->type = src.getType();
+	return (*this);
+}
+
+std::string Animal::getType(void) const
+{
+	return this->type;
+}
+
+void Animal::makeSound() const
+{
+	std::cout << "This animal seems to make no sound" << std::endl;
+	return;
+}
+
+Animal::~Animal()
+{
+	std::cout << "Animal was destroyed" << std::endl;
+}
