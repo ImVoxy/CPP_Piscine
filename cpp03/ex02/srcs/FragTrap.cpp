@@ -2,38 +2,24 @@
 
 FragTrap::FragTrap() : ClapTrap()
 {
-	std::cout << "FragTrap alpascal was created!" << std::endl;
+	std::cout << "FragTrap was created!" << std::endl;
 	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 20;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
 }
 
 FragTrap::FragTrap(std::string const &name) : ClapTrap(name)
 {
 	std::cout << "FragTrap " << name << " was created!" << std::endl;
 	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 20;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
 }
 
 FragTrap::FragTrap(FragTrap const &src) : ClapTrap(src)
 {
-}
-
-void FragTrap::attack(std::string const &target)
-{
-	std::cout << "FragTrap -> ";
-	this->ClapTrap::attack(target);
-}
-void FragTrap::takeDamage(unsigned int amount)
-{
-	std::cout << "FragTrap -> ";
-	this->ClapTrap::takeDamage(amount);
-}
-void FragTrap::beRepaired(unsigned int amount)
-{
-	std::cout << "FragTrap -> ";
-	this->ClapTrap::beRepaired(amount);
+	std::cout << "FragTrap was copied!" << std::endl;
+    *this = src;
 }
 
 void FragTrap::highFivesGuys()

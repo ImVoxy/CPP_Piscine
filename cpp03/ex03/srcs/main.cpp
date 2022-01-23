@@ -1,14 +1,17 @@
-#include <iostream>
-#include "DiamondTrap.hpp"
+#include "../includes/DiamondTrap.hpp"
 
 int main(void)
 {
-	DiamondTrap player("Player1");
+	DiamondTrap player2("Bob");
 
-	player.attack("RandomEnemy");
-	player.takeDamage(100);
-	player.beRepaired(3);
-	player.highFivesGuys();
-	player.guardGate();
-	player.whoAmI();
+	player2.attack("RandomEnemy");
+	player2.takeDamage(50);
+	player2.beRepaired(3);
+	player2.highFivesGuys();
+	player2.guardGate();
+	player2.whoAmI();
+	player2.takeDamage(52);
+	player2.attack("RandomEnemy");
+	player2.takeDamage(1);
+	player2.attack("RandomEnemy");
 }

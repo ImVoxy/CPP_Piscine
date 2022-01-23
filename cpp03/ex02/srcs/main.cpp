@@ -2,14 +2,14 @@
 
 int main(void)
 {
-	ClapTrap player1("Jim");
 	FragTrap player2("Bob");
 
-	player1.attack("RandomEnemy");
-	player1.takeDamage(42);
-	player1.beRepaired(21);
 	player2.attack("RandomEnemy");
-	player2.takeDamage(100);
+	player2.takeDamage(50);
 	player2.beRepaired(3);
 	player2.highFivesGuys();
+	player2.takeDamage(52);
+	player2.attack("RandomEnemy");
+	player2.takeDamage(1);
+	player2.attack("RandomEnemy");
 }

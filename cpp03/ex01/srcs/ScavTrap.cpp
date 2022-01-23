@@ -18,22 +18,8 @@ ScavTrap::ScavTrap(std::string const &name) : ClapTrap(name)
 
 ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
 {
-}
-
-void ScavTrap::attack(std::string const &target)
-{
-	std::cout << "ScavTrap -> ";
-	this->ClapTrap::attack(target);
-}
-void ScavTrap::takeDamage(unsigned int amount)
-{
-	std::cout << "ScavTrap -> ";
-	this->ClapTrap::takeDamage(amount);
-}
-void ScavTrap::beRepaired(unsigned int amount)
-{
-	std::cout << "ScavTrap -> ";
-	this->ClapTrap::beRepaired(amount);
+	std::cout << "ScavTrap was copied!" << std::endl;
+    *this = src;
 }
 
 void ScavTrap::guardGate()
@@ -49,7 +35,6 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 	this->_attackDamage = src._attackDamage;
 	return (*this);
 }
-
 
 ScavTrap::~ScavTrap()
 {

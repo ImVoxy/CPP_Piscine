@@ -1,6 +1,6 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap("default_clap_name"), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap() : ClapTrap("default_clap_name"), ScavTrap("default"), FragTrap("default")
 {
 	std::cout << "DiamondTrap default was created!" << std::endl;
 	this->_name = "default";
@@ -20,20 +20,7 @@ DiamondTrap::DiamondTrap(std::string const &name) : ClapTrap(name + "_clap_name"
 
 void DiamondTrap::attack(std::string const &target)
 {
-	std::cout << "DiamondTrap -> ";
 	this->ScavTrap::attack(target);
-}
-
-void DiamondTrap::takeDamage(unsigned int amount)
-{
-	std::cout << "DiamondTrap -> ";
-	this->ClapTrap::takeDamage(amount);
-}
-
-void DiamondTrap::beRepaired(unsigned int amount)
-{
-	std::cout << "DiamondTrap -> ";
-	this->ClapTrap::beRepaired(amount);
 }
 
 void DiamondTrap::whoAmI()
