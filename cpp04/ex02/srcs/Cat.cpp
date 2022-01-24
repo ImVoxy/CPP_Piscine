@@ -1,13 +1,13 @@
 #include "Cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : AAnimal()
 {
 	this->type = "Cat";
 	this->brain = new Brain();
 	std::cout << this->type << " was created" << std::endl;
 }
 
-Cat::Cat(Cat const &src) : Animal(src)
+Cat::Cat(Cat const &src) : AAnimal(src)
 {
 	std::cout << "Cat was copied" << std::endl;
 	this->type = src.type;
@@ -22,7 +22,8 @@ void Cat::makeSound() const
 
 Cat &Cat::operator=(Cat const &src)
 {
-	this->Animal::operator=(src);
+	std::cout << "Deep cat copy" << std::endl;
+	this->AAnimal::operator=(src);
 	delete this->brain;
     this->brain = new Brain(*(src.brain));
 	return (*this);

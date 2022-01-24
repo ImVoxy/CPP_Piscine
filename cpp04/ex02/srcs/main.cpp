@@ -3,7 +3,7 @@
 #include "WrongCat.hpp"
 
 int main(void) {
-	Animal** animals = new Animal*[6];
+	AAnimal** animals = new AAnimal*[6];
 	Dog      dog;
 	Cat      cat;
 

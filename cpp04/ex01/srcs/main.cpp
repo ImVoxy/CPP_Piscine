@@ -3,49 +3,35 @@
 #include "WrongCat.hpp"
 
 int main(void) {
-  Animal** array = new Animal*[6];
-  Dog      copydog;
-  Cat      copycat;
+	Animal** animals = new Animal*[6];
+	Dog      dog;
+	Cat      cat;
 
-  Dog clonedog;
-  clonedog = copydog;
+	Dog deepdogcopy;
+	deepdogcopy = dog;
 
-  Cat clonecat(copycat);
+	Cat catcopy(cat);
 
-  std::cout << "copydog is " << copydog.getType() << std::endl;
-  std::cout << "clonedog is " << clonedog.getType() << std::endl;
+	std::cout << "dog is --> " << dog.getType() << std::endl;
+	std::cout << "dogcopy is --> " << deepdogcopy.getType() << std::endl;
 
-  std::cout << "copycat is " << copycat.getType() << std::endl;
-  std::cout << "clonecat is " << clonecat.getType() << std::endl;
+	std::cout << "cat is --> " << cat.getType() << std::endl;
+	std::cout << "catcopy is --> " << catcopy.getType() << std::endl;
 
-  Brain *brain_ptr = copycat.getBrain();
-  std::string* ideas = brain_ptr->getIdeas();
-  ideas[0] = "copycat idea 0";
-  std::cout << ideas[0] << std::endl;
+	animals[0] = new Dog();
+	animals[1] = new Cat();
+	animals[2] = new Dog();
+	animals[3] = new Cat();
+	animals[4] = new Dog();
+	animals[5] = new Cat();
+	for (int i = 0; i < 6; i++) {
+		std::cout << animals[i]->getType() << std::endl;
+		animals[i]->makeSound();
+	}
 
-  brain_ptr = clonecat.getBrain();
-  ideas = brain_ptr->getIdeas();
-  // ideas[0] = "clonecat idea 0";
-  std::cout << ideas[0] << std::endl;
-
-  for (int i = 0; i < 3; i++) {
-    array[i] = new Dog();
-  }
-
-  for (int i = 3; i < 6; i++) {
-    array[i] = new Cat();
-  }
-
-  for (int i = 0; i < 6; i++) {
-    std::cout << array[i]->getType() << std::endl;
-    array[i]->makeSound();
-  }
-
-  for (int i = 0; i < 6; i++) {
-    delete array[i];
-  }
-
-  delete[] array;
-
-  return 0;
+	for (int i = 0; i < 6; i++) {
+		delete animals[i];
+	}
+	delete[] animals;
+	return 0;
 }

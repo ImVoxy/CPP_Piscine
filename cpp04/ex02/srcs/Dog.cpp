@@ -1,13 +1,13 @@
 #include "Dog.hpp"
 
-Dog::Dog() : Animal()
+Dog::Dog() : AAnimal()
 {
 	this->type = "Dog";
 	this->brain = new Brain();
 	std::cout << this->type << " was created" << std::endl;
 }
 
-Dog::Dog(Dog const &src) : Animal(src)
+Dog::Dog(Dog const &src) : AAnimal(src)
 {
 	this->type = src.type;
 	this->brain = new Brain(*(src.brain));
@@ -22,7 +22,8 @@ void Dog::makeSound() const
 
 Dog &Dog::operator=(Dog const &src)
 {
-	this->Animal::operator=(src);
+	std::cout << "Deep dog copy" << std::endl;
+	this->AAnimal::operator=(src);
 	delete this->brain;
     this->brain = new Brain(*(src.brain));
 	return (*this);

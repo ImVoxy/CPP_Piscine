@@ -12,9 +12,11 @@ private:
 public:
 	Dog();
 	Dog(Dog const &);
+	Dog &operator=(Dog const &);
+
 	void makeSound() const;
 	Brain *getBrain();
-	Dog &operator=(Dog const &);
+
 	virtual ~Dog();
 };
 
