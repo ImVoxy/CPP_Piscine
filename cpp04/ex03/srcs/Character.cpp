@@ -7,12 +7,12 @@ Character::Character(std::string const &name)
 		this->_materia[i] = NULL;
 }
 
-Character::Character(Character const &other)
+Character::Character(Character const &src)
 {
-	this->_name = other.getName();
+	this->_name = src.getName();
 	for (int i = 0; i < 4; ++i)
 	{
-		AMateria const *tmp = other.getMateria(i);
+		AMateria const *tmp = src.getMateria(i);
 		if (tmp != NULL)
 			this->_materia[i] = tmp->clone();
 		else
@@ -20,16 +20,15 @@ Character::Character(Character const &other)
 	}
 }
 
-Character &Character::operator=(Character const &other)
+Character &Character::operator=(Character const &src)
 {
-	if (this != &other)
+	if (this != &src)
 	{
 		this->~Character();
-
-		this->_name = other.getName();
+		this->_name = src.getName();
 		for (int i = 0; i < 4; ++i)
 		{
-			AMateria const *tmp = other.getMateria(i);
+			AMateria const *tmp = src.getMateria(i);
 			if (tmp != NULL)
 				this->_materia[i] = tmp->clone();
 			else
@@ -37,15 +36,6 @@ Character &Character::operator=(Character const &other)
 		}
 	}
 	return *this;
-}
-
-Character::~Character()
-{
-	for (int i = 0; i < 4; ++i)
-	{
-		if (this->_materia[i] != NULL)
-			delete this->_materia[i];
-	}
 }
 
 std::string const &Character::getName() const
@@ -67,6 +57,8 @@ void Character::equip(AMateria *materia)
 			this->_materia[i] = materia;
 			return;
 		}
+		else if (i == 3)
+			std::cout << "Can't equip more materia" << std::endl;
 	}
 }
 
@@ -80,7 +72,18 @@ void Character::unequip(int idx)
 void Character::use(int idx, ICharacter &target)
 {
 	if (idx < 0 || idx > 3)
+	{
 		return;
+	}
 	if (this->_materia[idx] != NULL)
 		this->_materia[idx]->use(target);
+}
+
+Character::~Character()
+{
+	for (int i = 0; i < 4; ++i)
+	{
+		if (this->_materia[i] != NULL)
+			delete this->_materia[i];
+	}
 }

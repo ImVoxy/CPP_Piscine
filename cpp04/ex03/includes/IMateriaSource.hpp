@@ -1,15 +1,14 @@
-#if !defined(IMATERICSOURCE_HPP)
+#ifndef IMATERICSOURCE_HPP
 #define IMATERICSOURCE_HPP
 
-#include <iostream>
 #include "AMateria.hpp"
 
 class IMateriaSource
 {
 public:
-	virtual ~IMateriaSource() {}
 	virtual void learnMateria(AMateria *) = 0;
 	virtual AMateria *createMateria(std::string const &type) = 0;
+	virtual ~IMateriaSource(){};
 };
 
-#endif // IMATERICSOURCE_HPP
+#endif

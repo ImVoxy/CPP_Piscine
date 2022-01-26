@@ -1,4 +1,4 @@
-#if !defined(ICE_HPP)
+#ifndef ICE_HPP
 #define ICE_HPP
 
 #include "AMateria.hpp"
@@ -6,14 +6,13 @@
 class Ice : public AMateria
 {
 private:
-	/* data */
 public:
 	Ice();
-	Ice(Ice const &other);
-	Ice &operator=(Ice const &other);
-	~Ice();
+	Ice(Ice const &src);
+	Ice &operator=(Ice const &src);
 	AMateria *clone() const;
 	void use(ICharacter &target);
+	~Ice();
 };
 
-#endif // ICE_HPP
+#endif

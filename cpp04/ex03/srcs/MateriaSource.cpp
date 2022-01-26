@@ -6,11 +6,11 @@ MateriaSource::MateriaSource()
 		this->_materia[i] = NULL;
 }
 
-MateriaSource::MateriaSource(const MateriaSource &other)
+MateriaSource::MateriaSource(const MateriaSource &src)
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		AMateria const *tmp = other.getMateria(i);
+		AMateria const *tmp = src.getMateria(i);
 		if (tmp != NULL)
 			this->_materia[i] = tmp->clone();
 		else
@@ -18,14 +18,14 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 	}
 }
 
-MateriaSource &MateriaSource::operator=(const MateriaSource &other)
+MateriaSource &MateriaSource::operator=(const MateriaSource &src)
 {
-	if (this != &other)
+	if (this != &src)
 	{
 		this->~MateriaSource();
 		for (int i = 0; i < 4; ++i)
 		{
-			AMateria const *tmp = other.getMateria(i);
+			AMateria const *tmp = src.getMateria(i);
 			if (tmp != NULL)
 				this->_materia[i] = tmp->clone();
 			else
@@ -38,15 +38,6 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 AMateria *MateriaSource::getMateria(int index) const
 {
 	return (this->_materia[index]);
-}
-
-MateriaSource::~MateriaSource()
-{
-	for (int i = 0; i < 4; ++i)
-	{
-		if (this->_materia[i] != NULL)
-			delete this->_materia[i];
-	}
 }
 
 void MateriaSource::learnMateria(AMateria *materia)
@@ -69,4 +60,13 @@ AMateria *MateriaSource::createMateria(std::string const &type)
 			return (this->_materia[i]->clone());
 	}
 	return (NULL);
+}
+
+MateriaSource::~MateriaSource()
+{
+	for (int i = 0; i < 4; ++i)
+	{
+		if (this->_materia[i] != NULL)
+			delete this->_materia[i];
+	}
 }

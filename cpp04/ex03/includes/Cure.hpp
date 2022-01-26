@@ -1,4 +1,4 @@
-#if !defined(CURE_HPP)
+#ifndef CURE_HPP
 #define CURE_HPP
 
 #include "AMateria.hpp"
@@ -6,14 +6,13 @@
 class Cure : public AMateria
 {
 private:
-	/* data */
 public:
 	Cure();
-	Cure(Cure const &other);
-	Cure &operator=(Cure const &other);
-	~Cure();
+	Cure(Cure const &src);
+	Cure &operator=(Cure const &src);
 	AMateria *clone() const;
 	void use(ICharacter &target);
+	~Cure();
 };
 
-#endif // CURE_HPP
+#endif

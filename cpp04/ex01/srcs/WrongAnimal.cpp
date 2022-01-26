@@ -8,7 +8,7 @@ WrongAnimal::WrongAnimal()
 
 WrongAnimal::WrongAnimal(const WrongAnimal &src)
 {
-	std::cout << "WrongAnimal was copied" << std::endl;
+	std::cout << "Wrong Animal was copied" << std::endl;
 	*this = src;
 	return;
 }
@@ -26,10 +26,10 @@ std::string const &WrongAnimal::getType() const
 
 void WrongAnimal::makeSound() const
 {
-	std::cout << "Wrong animal doing wrong sounds" << std::endl;
+	std::cout << "Wrong Animal doing wrong sounds" << std::endl;
 }
 
 WrongAnimal::~WrongAnimal()
 {
-	std::cout << this->type << " was destroyed" << std::endl;
+	std::cout << this->type << "Wrong Animal was destroyed" << std::endl;
 }

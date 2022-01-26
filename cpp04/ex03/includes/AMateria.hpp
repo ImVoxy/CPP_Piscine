@@ -1,4 +1,4 @@
-#if !defined(AMATERIA_HPP)
+#ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
 #include <iostream>
@@ -7,21 +7,19 @@
 class AMateria
 {
 private:
-	AMateria(){};
+	AMateria();
 
 protected:
 	std::string _type;
-	unsigned int _xp;
 
 public:
 	AMateria(std::string const &type);
-	AMateria(AMateria const &other);
-	AMateria &operator=(AMateria const &other);
-	virtual ~AMateria();
-	std::string const &getType() const; //Returns the materia type
-	unsigned int getXP() const;			//Returns the Materia's XP
+	AMateria(AMateria const &src);
+	AMateria &operator=(AMateria const &src);
+	std::string const &getType() const;
 	virtual AMateria *clone() const = 0;
 	virtual void use(ICharacter &target);
+	virtual ~AMateria();
 };
 
-#endif // AMATERIA_HPP
+#endif

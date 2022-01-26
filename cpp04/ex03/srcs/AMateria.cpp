@@ -1,30 +1,27 @@
 #include <iostream>
 #include "AMateria.hpp"
 
+AMateria::AMateria()
+{
+}
+
 AMateria::AMateria(std::string const &type)
 {
 	this->_type = type;
-	this->_xp = 0;
 }
 
-AMateria::AMateria(AMateria const &other)
+AMateria::AMateria(AMateria const &src)
 {
-	this->_type = other._type;
-	this->_xp = other._xp;
+	this->_type = src._type;
 }
 
-AMateria &AMateria::operator=(AMateria const &other)
+AMateria &AMateria::operator=(AMateria const &src)
 {
-	if (this != &other)
+	if (this != &src)
 	{
-		this->_type = other._type;
-		this->_xp = other._xp;
+		this->_type = src._type;
 	}
 	return (*this);
-}
-
-AMateria::~AMateria()
-{
 }
 
 std::string const &AMateria::getType() const
@@ -32,12 +29,12 @@ std::string const &AMateria::getType() const
 	return (this->_type);
 }
 
-unsigned int AMateria::getXP() const
-{
-	return (this->_xp);
-}
 
 void AMateria::use(ICharacter &)
 {
-	this->_xp += 10;
+}
+
+
+AMateria::~AMateria()
+{
 }

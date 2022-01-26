@@ -22,6 +22,7 @@ void Cat::makeSound() const
 
 Cat &Cat::operator=(Cat const &src)
 {
+	std::cout << "Deep cat copy" << std::endl;
 	this->Animal::operator=(src);
 	delete this->brain;
     this->brain = new Brain(*(src.brain));

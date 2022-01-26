@@ -22,6 +22,7 @@ void Dog::makeSound() const
 
 Dog &Dog::operator=(Dog const &src)
 {
+	std::cout << "Deep dog copy" << std::endl;
 	this->Animal::operator=(src);
 	delete this->brain;
     this->brain = new Brain(*(src.brain));

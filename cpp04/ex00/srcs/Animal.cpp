@@ -36,5 +36,5 @@ void Animal::makeSound() const
 
 Animal::~Animal()
 {
-	std::cout << this->type << " was destroyed" << std::endl;
+	std::cout << "Random Animal was destroyed" << std::endl;
 }

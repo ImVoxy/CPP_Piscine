@@ -32,11 +32,11 @@ std::string Animal::getType(void) const
 
 void Animal::makeSound() const
 {
-	std::cout << "This animal seems to make no sound" << std::endl;
+	std::cout << "This Animal seems to make no sound" << std::endl;
 	return;
 }
 
 Animal::~Animal()
 {
-	std::cout << "Animal was destroyed" << std::endl;
+	std::cout << "Random Animal was destroyed" << std::endl;
 }

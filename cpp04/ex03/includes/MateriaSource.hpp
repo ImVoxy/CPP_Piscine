@@ -1,4 +1,4 @@
-#if !defined(MATERIASOURCE_HPP)
+#ifndef MATERIASOURCE_HPP
 #define MATERIASOURCE_HPP
 
 #include "IMateriaSource.hpp"
@@ -10,8 +10,8 @@ private:
 
 public:
 	MateriaSource();
-	MateriaSource(MateriaSource const &other);
-	MateriaSource &operator=(MateriaSource const &other);
+	MateriaSource(MateriaSource const &src);
+	MateriaSource &operator=(MateriaSource const &src);
 	AMateria *getMateria(int index) const;
 	~MateriaSource();
 
@@ -19,4 +19,4 @@ public:
 	AMateria *createMateria(std::string const &type);
 };
 
-#endif // MATERIASOURCE_HPP
+#endif

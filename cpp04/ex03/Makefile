@@ -1,4 +1,4 @@
-NAME = animal
+NAME = interface
 
 CXX = clang++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror

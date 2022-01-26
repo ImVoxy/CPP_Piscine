@@ -38,5 +38,5 @@ void AAnimal::makeSound() const
 
 AAnimal::~AAnimal()
 {
-	std::cout << "Animal was destroyed" << std::endl;
+	std::cout << "Random Animal was destroyed" << std::endl;
 }
