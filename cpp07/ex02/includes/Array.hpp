@@ -6,32 +6,32 @@ class Array
 {
 private:
 	unsigned int _size;
-	T *array;
+	T *_array;
 
 public:
-	Array() : _size(0), array(new T[0])
+	Array() : _size(0), _array(new T[0])
 	{
 	}
-	Array(unsigned int const &n) : _size(n),  array(new T[n])
+	Array(unsigned int const &n) : _size(n),  _array(new T[n])
 	{
 	}
-	Array(Array const &src) : array(NULL)
+	Array(Array const &src) : _array(NULL)
 	{
 		this->_size = src.size();
-		this->array = new T[src.size()];
+		this->_array = new T[src.size()];
 		for (unsigned int i = 0; i < src.size(); i++)
-			this->array[i] = src.array[i];
+			this->_array[i] = src._array[i];
 	}
 
 	Array<T> &operator=(const Array &src)
 	{
 		if (this != &src)
 		{
-			delete[] this->array;
+			delete[] this->_array;
 			this->_size = src.size();
-			this->array = new T[src.size()];
+			this->_array = new T[src.size()];
 			for (unsigned int i = 0; i < src.size(); i++)
-				this->array[i] = src.array[i];
+				this->_array[i] = src._array[i];
 		}
 		return *this;
 	}
@@ -40,22 +40,22 @@ public:
 	{
 		if (i < 0 || i >= this->size())
 			throw Array::OutOfBoundsException();
-		return this->array[i];
+		return this->_array[i];
 	}
 	const T&operator[](unsigned int i) const
 	{
 		if (i < 0 || i >= this->size())
 			throw Array::OutOfBoundsException();
-		return this->array[i];
+		return this->_array[i];
 	}
 	~Array()
 	{
-		delete[] this->array;
+		delete[] this->_array;
 	}
 
 	T *getArray() const
 	{
-		return this->array;
+		return this->_array;
 	}
 
 	unsigned int size() const
