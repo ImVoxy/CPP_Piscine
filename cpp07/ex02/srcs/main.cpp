@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "../includes/Array.hpp"
+#include <cstdlib>
 
 int main(void)
 {

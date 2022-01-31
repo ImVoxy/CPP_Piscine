@@ -18,23 +18,13 @@ public:
 	test &operator=(test const &src)
 	{
 		if (this != &src)
-		{
 			this->_value = src._value;
-		}
 		return *this;
 	}
 	~test()
 	{
 	}
 
-	bool operator<(test const &src) const
-	{
-		return (this->_value < src._value);
-	}
-	bool operator>(test const &src) const
-	{
-		return (this->_value > src._value);
-	}
 	int getValue() const
 	{
 		return this->_value;

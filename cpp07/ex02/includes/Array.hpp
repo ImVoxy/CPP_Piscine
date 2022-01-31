@@ -9,43 +9,42 @@ private:
 	T *array;
 
 public:
-	Array()
+	Array() : _size(0), array(new T[0])
 	{
-		_size = 0;
-		array = new T[0];
 	}
-	Array(unsigned int n)
+	Array(unsigned int const &n) : _size(n),  array(new T[n])
 	{
-		array = new T[n];
-		_size = n;
 	}
-	Array(const Array &src)
+	Array(Array const &src) : array(NULL)
 	{
+		this->_size = src.size();
 		this->array = new T[src.size()];
 		for (unsigned int i = 0; i < src.size(); i++)
-			this->array[i] = src[i];
+			this->array[i] = src.array[i];
 	}
+
 	Array<T> &operator=(const Array &src)
 	{
 		if (this != &src)
 		{
-			this->~Array();
+			delete[] this->array;
 			this->_size = src.size();
 			this->array = new T[src.size()];
 			for (unsigned int i = 0; i < src.size(); i++)
-				this->array[i] = src[i];
+				this->array[i] = src.array[i];
 		}
 		return *this;
 	}
-	T operator[](int i) const
+
+	T &operator[](unsigned int i)
 	{
-		if (i < 0 || i >= static_cast<int>(this->size()))
+		if (i < 0 || i >= this->size())
 			throw Array::OutOfBoundsException();
 		return this->array[i];
 	}
-	T &operator[](int i)
+	const T&operator[](unsigned int i) const
 	{
-		if (i < 0 || i >= static_cast<int>(this->size()))
+		if (i < 0 || i >= this->size())
 			throw Array::OutOfBoundsException();
 		return this->array[i];
 	}
